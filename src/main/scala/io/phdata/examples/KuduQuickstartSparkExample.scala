@@ -13,7 +13,11 @@ object KuduQuickstartSparkExample {
     val dataFileName = "NASA_Labs_Facilities_clean.csv"
     // this won't work in spark-submit. A temp file can be generated using NasaData.getTmpDatafileName
     // in an IDE, the resource file works fine
-    val dataPath = NasaData.getResourceDataFilePath(dataFileName)
+    val dataPath = if(args.length > 0 && args(0) == "use-resources")
+      NasaData.getResourceDataFilePath(dataFileName) else
+      NasaData.getTmpDatafileName
+    println((new StringBuilder).append("File used for data source: ").append(dataPath))
+
     val spark: SparkSession = getSparkSession
     import spark.implicits._
 
@@ -81,7 +85,7 @@ object KuduQuickstartSparkExample {
       .select($"agency",$"lab_name",$"facility",$"occupied_year")
 
     nasaKuduDf.show(false)
-    //NasaData.cleanupDataFiles // cleanup temp files used for the resource workaround
+    NasaData.cleanupDataFiles // cleanup temp files used for the resource workaround
   }
 
   private def getSparkSession = {
