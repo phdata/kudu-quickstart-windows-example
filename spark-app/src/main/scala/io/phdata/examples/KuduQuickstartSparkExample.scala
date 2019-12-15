@@ -1,6 +1,5 @@
 package io.phdata.examples
 
-import io.phdata.examples.NasaData.getClass
 import org.apache.kudu.client.CreateTableOptions
 import org.apache.kudu.spark.kudu.KuduContext
 import org.apache.spark.sql.{DataFrame, SparkSession}

@@ -1,0 +1,1 @@
+spark-shell --packages org.apache.kudu:kudu-spark2_2.11:1.11.1
