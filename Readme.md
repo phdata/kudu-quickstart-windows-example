@@ -66,7 +66,7 @@ The `KuduQuickstartSparkExample` scala application is a Maven-backed project tha
 
 *NOTE #2: By default, because of issues with loading resource files in a SparkSession, the application generates the data manually in `NasaData`. It's possible to use the resources directory by passing `use-resources` as a command line arg in the Run Configuration.*
 
-# Running the Kudu Quickstart `spark-shell` Example
+# Running the Kudu Quickstart spark-shell Example
 The `spark-shell` example is available to experiment with the Kudu cluster in an interactive Spark session.
 
 To run this example, you must be in Powershell in the **spark-shell-powershell** directory.
