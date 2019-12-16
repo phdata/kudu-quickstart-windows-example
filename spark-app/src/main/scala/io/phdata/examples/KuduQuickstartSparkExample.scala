@@ -4,18 +4,16 @@ import org.apache.kudu.client.CreateTableOptions
 import org.apache.kudu.spark.kudu.KuduContext
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.types.{StructField, StructType}
-
 import scala.collection.JavaConverters._
 
 object KuduQuickstartSparkExample {
   def main(args: Array[String]): Unit = {
     val dataFileName = "NASA_Labs_Facilities_clean.csv"
-    // this won't work in spark-submit. A temp file can be generated using NasaData.getTmpDatafileName
-    // in an IDE, the resource file works fine
+    // Using resources work in spark-submit. A temp file can be generated using NasaData.getTmpDatafileName
+    // in an IDE, the resource file works fine, so it's recommended to pass in use-resources to the args
     val dataPath = if(args.length > 0 && args(0) == "use-resources")
       NasaData.getResourceDataFilePath(dataFileName) else
       NasaData.getTmpDatafileName
-    println((new StringBuilder).append("File used for data source: ").append(dataPath))
 
     val spark: SparkSession = getSparkSession
     import spark.implicits._

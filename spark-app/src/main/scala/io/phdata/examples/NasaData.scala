@@ -469,6 +469,8 @@ object NasaData {
     bufferedWriter.write(nasaMtoMData)
     bufferedWriter.write(nasaNtoRData)
     bufferedWriter.close()
+
+    println("Temporary NASA data file path: " + dataFile.getAbsolutePath)
     dataFile.getAbsolutePath
   }
 
